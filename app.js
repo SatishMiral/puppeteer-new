@@ -8,6 +8,11 @@ import cors from 'cors';
 const app = express();
 app.use(cors());  // Enable CORS for all requests
 
+// Simple route to confirm server is running
+app.get('/', (req, res) => {
+    res.send("Puppeteer server successfully running!!!");
+});
+
 // Route to accept Flipkart URL as a query parameter
 app.get('/start-puppeteer', async (req, res) => {
     try {
