@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());  // Enable CORS for all requests
 
 // Simple route to confirm server is running
-app.get('/', (req, res) => {
-    res.send("Puppeteer server successfully running!!!");
-});
+// app.get('/', (req, res) => {
+//     res.send("Puppeteer server successfully running!!!");
+// });
 
 // Route to accept Flipkart URL as a query parameter
 app.get('/start-puppeteer', async (req, res) => {
@@ -25,7 +25,8 @@ app.get('/start-puppeteer', async (req, res) => {
 
         const browser = await puppeteer.launch({
             headless: true, // Run in headless mode on EC2
-            args: ['--no-sandbox', '--disable-setuid-sandbox'] // Recommended for running in cloud environments
+            args: ['--no-sandbox',
+                '--disable-setuid-sandbox'], // Recommended for running in cloud environments
         });
 
         const page = await browser.newPage();
@@ -82,7 +83,7 @@ app.get('/start-puppeteer', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 22;
-app.listen(PORT, '0.0.0.0', () => {
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
     console.log(`Server is running on Port:${PORT}`);
 });
