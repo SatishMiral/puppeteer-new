@@ -8,11 +8,6 @@ import cors from 'cors';
 const app = express();
 app.use(cors());  // Enable CORS for all requests
 
-// Simple route to confirm server is running
-// app.get('/', (req, res) => {
-//     res.send("Puppeteer server successfully running!!!");
-// });
-
 // Route to accept Flipkart URL as a query parameter
 app.get('/start-puppeteer', async (req, res) => {
     try {
@@ -61,7 +56,7 @@ app.get('/start-puppeteer', async (req, res) => {
             const ratingElements = document.querySelectorAll('.a-icon-alt');
             const linkElements = document.querySelectorAll('.a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal');
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 3; i++) {
                 const price = priceElements[i]?.innerText || "No price available";
                 const rating = ratingElements[i]?.innerText?.slice(0, 3) || "No rating available";
                 const link = linkElements[i]?.href || "No Link Available";
